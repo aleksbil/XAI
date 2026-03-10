@@ -1,4 +1,4 @@
-#
+#ETA
 def calculate_delivery_eta(distance, average_speed, is_stormy):
     base_time = distance / average_speed
 
@@ -13,8 +13,18 @@ def calculate_delivery_eta(distance, average_speed, is_stormy):
         explanation = "Standard conditions (no penalty)."
         
     return final_time, explanation
-
-
+#fuel cost
+def estimate_fuel_cost(distance, consumption_per_100km, fuel_price):
+    total_liters = (distance / 100) * consumption_per_100km
+    total_cost = total_liters * fuel_price
+    
+    #mini-explanatory
+    if consumption_per_100km > 30:
+        efficiency_note = "High fuel consumption! Consider maintenance."
+    else:
+        efficiency_note = "Fuel consumption is within the eco-friendly range."
+        
+    return total_cost, efficiency_note
 #distance
 while True:
     try:
@@ -48,7 +58,27 @@ while True:
 #result
 eta, msg = calculate_delivery_eta(distance, average_speed, is_stormy)
 
-print("-" * 30)
-print(f'Expected ETA: {eta:.2f} h')
-print(f'Status: {msg}')
-print("-" * 30)
+#fuel
+print("\n--- FUEL ESTIMATOR ---")
+try:
+    cons = float(input("Avg consumption (L/100km): "))
+    price = float(input("Fuel price per liter (PLN): "))
+
+    #distance from ETA
+    cost, note = estimate_fuel_cost(distance, cons, price)
+    
+    fuel_result = f"Total fuel cost: {cost:.2f} PLN ({note})"
+except ValueError:
+    fuel_result = "Fuel calculation failed due to invalid input."
+
+#report
+
+print("\n" + "=" * 40)
+print(f"       LOGISTICS REPORT       ")
+print("=" * 40)
+print(f"ROUTE DISTANCE: {distance} km")
+print(f"EXPECTED ETA:   {eta:.2f} h")
+print(f"TIME STATUS:    {msg}")
+print("-" * 40)
+print(f"FUEL STATUS:    {fuel_result}")
+print("=" * 40)
