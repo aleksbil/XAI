@@ -1,11 +1,17 @@
 What's done:
-Core Logic: Created the calculate_delivery_eta function. It’s the brain of the operation.
+Core Logic: 
+  *Created the calculate_delivery_eta function (it’s the brain of the operation). 
+  *Added the estimate_fuel_cost as extention (functions and loops consolidation)
 
-XAI Element: Added the first "Explainable" feature. The system doesn't just give a number; it explains that a 20% penalty was applied due to a storm.
+XAI Element: 
+  *Added the first "Explainable" feature. The system doesn't just give a number; it explains that a 20% penalty was applied due to a storm.
+  *Added information considering fuel consumption outcome - low/high. 
 
-Security (The "Anti-Crash" Shield): Implemented try-except blocks. The program no longer dies when a user types "potato" instead of a distance.
+Security (The "Anti-Crash" Shield): 
+  *Implemented try-except blocks. The program no longer dies when a user types "potato" instead of a distance.
 
-Data Handling: Fixed the "Boolean Trap" (Python's bool() behavior) and ensured all inputs are converted to floats for calculations.
+Data Handling: 
+  *Fixed the "Boolean Trap" (Python's bool() behavior) and ensured all inputs are converted to floats for calculations.
 
 Current Stage: Level 1 (Fundamentals)
 Exploring the core concepts: functions, variables, and error handling.
